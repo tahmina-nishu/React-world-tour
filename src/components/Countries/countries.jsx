@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import Country from "../country/country";
+import './countries.css'
 
 
 const Countries = () => {
@@ -15,9 +16,11 @@ const Countries = () => {
     return (
         <div>
             <h3>Countries : {countries.length}</h3>
-            {
-                countries.map(country => <Country key={country.cca3} country = {country}></Country>) //key te unique kichu ekta dite hobe/ key ta na dileo hoy . kintu dewa ta valo.
-            }
+            <div className="country-container">
+                {
+                    countries.map(country => <Country key={country.cca3} country = {country}></Country>) //key te unique kichu ekta dite hobe/ key ta na dileo hoy . kintu dewa ta valo.
+                }
+            </div>
         </div>
     );
 };

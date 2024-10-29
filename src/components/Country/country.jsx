@@ -1,24 +1,4 @@
-import './country.css'
-
-
-const Country = ({country}) => {
-    console.log(country);
-
-    const {name, flags, population, area} = country;
-    return (
-        <div className='country'>
-            <p>Name : {name.common}</p>
-            <img src={flags.png}/>
-            <p>Population : {population}</p>
-            <p>Area : {area}</p>
-        </div>
-    );
-};
-
-export default Country;
-
-
-// -----------steps---------
+// ----------------steps--------------------
 
 //     1. create a folder named "component"
 
@@ -54,3 +34,54 @@ export default Country;
 //     7. then if you want to add CSS, create a css file in the same folder and add the css using class or id 
 // ensure that the css file is imported 
 
+// ------------------------------------------------------------- 
+
+import { useState } from 'react';
+import './country.css'
+
+
+const Country = ({country}) => {
+    console.log(country);
+
+    const {name, flags, population, area, cca3} = country;
+
+
+    
+// ---------------handle visited button ---------------
+
+            // 1. create a button in return 
+            //     demo : <button onClick={handleVisited}>Visited</button>
+
+            // 2. declare a state 
+            //     demo : const [visited, setVisited] = useState(false)
+
+            // 3. create a function name "handleVisited()"
+
+// --------------------------------------------------- 
+
+
+    const [visited, setVisited] = useState(false)
+    // const handleVisited = () => {
+    //     setVisited(true)
+    // }
+
+    const handleVisited = () => {
+        setVisited(!visited)
+    }
+
+    return (
+        <div className='country'>
+            <p>Name : {name.common}</p>
+            <img src={flags.png}/>
+            <p>Population : {population}</p>
+            <p>Area : {area}</p>
+            <p>Code : {cca3}</p>
+
+            <button onClick={handleVisited}>{visited ? 'Visited' : 'Going'}</button>
+            {/* {visited && 'I have visited this country.'} */}
+            {visited ? 'I have visited this country.' : 'I want to visit this country.'}
+        </div>
+    );
+};
+
+export default Country;
