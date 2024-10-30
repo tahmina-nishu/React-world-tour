@@ -31,7 +31,9 @@ const Countries = () => {
 
     const handleVisitedCountry = country => {
         console.log('add this to your visited country');
-        console.log(country);
+        //console.log(country);
+        const newVisitedCountries = [...visitedCountries,country];
+        setVisitedCountries(newVisitedCountries);
     }
 
 
@@ -41,14 +43,17 @@ const Countries = () => {
 
         {/* visited countries  */}
             <div>
-                <h3>Visited Countries</h3>
+                <h3>Visited Countries : {visitedCountries.length}</h3>
                 <ul>
-
+                    {
+                        visitedCountries.map(country => <li key={country.cca3}>{country.name.common}</li>)
+                    }
                 </ul>
             </div>
 
             <div className="country-container">
                 {
+
                     countries.map(country => <Country key={country.cca3} handleVisitedCountry={handleVisitedCountry} country = {country}></Country>) //key te unique kichu ekta dite hobe/ key ta na dileo hoy . kintu dewa ta valo.
                 }
             </div>
