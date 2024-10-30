@@ -9,6 +9,7 @@ import './countries.css'
 const Countries = () => {
     const [countries, setCountries] = useState([]);
     const [visitedCountries, setVisitedCountries] = useState([]);
+    const [visitedFlags, setVisitedFlags] = useState([]);
 
     useEffect(()=>{
         fetch('https://restcountries.com/v3.1/all')
@@ -36,14 +37,21 @@ const Countries = () => {
         setVisitedCountries(newVisitedCountries);
     }
 
+    const handleVisitedFlags = flag => {
+        console.log('flag added');
+        const newVisitedFlags = [...visitedFlags,flag];
+        setVisitedFlags(newVisitedFlags);
+    }
+
 
     return (
         <div>
             <h3>Countries : {countries.length}</h3>
 
         {/* visited countries  */}
-            <div>
+            <div className="visited-country-container">
                 <h3>Visited Countries : {visitedCountries.length}</h3>
+                <h3>Visited countries</h3>
                 <ul>
                     {
                         visitedCountries.map(country => <li key={country.cca3}>{country.name.common}</li>)
@@ -51,10 +59,23 @@ const Countries = () => {
                 </ul>
             </div>
 
+            {/* display flags  */}
+            <div className="flag-container">
+                <h3>Visited flags</h3>
+                {
+                    visitedFlags.map((flag, indx) => <img key={indx} src={flag}></img>)
+                }
+            </div>
+
+            {/* display countries  */}
             <div className="country-container">
                 {
 
-                    countries.map(country => <Country key={country.cca3} handleVisitedCountry={handleVisitedCountry} country = {country}></Country>) //key te unique kichu ekta dite hobe/ key ta na dileo hoy . kintu dewa ta valo.
+                    countries.map(country => <Country 
+                        key={country.cca3} 
+                        handleVisitedCountry={handleVisitedCountry} 
+                        handleVisitedFlags={handleVisitedFlags}
+                        country = {country}></Country>) //key te unique kichu ekta dite hobe/ key ta na dileo hoy . kintu dewa ta valo.
                 }
             </div>
         </div>

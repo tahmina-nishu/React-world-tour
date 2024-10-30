@@ -40,7 +40,7 @@ import { useState } from 'react';
 import './country.css'
 
 
-const Country = ({country, handleVisitedCountry}) => {
+const Country = ({country, handleVisitedCountry, handleVisitedFlags}) => {
    // console.log(country);
 
     const {name, flags, population, area, cca3} = country;
@@ -80,10 +80,12 @@ const Country = ({country, handleVisitedCountry}) => {
             <p>Area : {area}</p>
             <p>Code : {cca3}</p>
 
-            <button onClick={() =>handleVisitedCountry(country)}>Mark Visited</button> 
+            <button className='btn-cls'  onClick={() =>handleVisitedCountry(country)}>Mark Visited</button> 
             {/*  handleVisitedCountry te parameter pathanor jonno first bracket dile prottekta countryr jonno function ta auto call hoye jabe. ei prblm solve er jonno ekhane arrow function dite hobe. tarpor arrow function ta k call kore dibo ekhane. */}
             
             <br />
+            <button onClick={() => handleVisitedFlags(country.flags.png)}>Add flag</button> <br />
+
             <button className='btn-cls' onClick={handleVisited}>{visited ? 'Visited' : 'Going'}</button> <br />
             {/* {visited && 'I have visited this country.'} */}
             {visited ? 'I have visited this country.' : 'I want to visit this country.'}

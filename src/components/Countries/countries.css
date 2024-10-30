@@ -1,5 +1,6 @@
 .country-container{
-    display: grid;grid-template-columns: repeat(3, 1fr);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
 }
 
@@ -10,4 +11,20 @@
 
 .btn-cls{
     margin: 15px;
+}
+
+.visited-country-container{
+    border: 2px solid slategrey;
+    margin: 20px;
+}
+
+.flag-container{
+    border: 2px solid steelblue;
+    margin: 20px;
+}
+
+.flag-container img{
+    width: 100px;
+    height: 60px;
+    margin: 20px;
 }
