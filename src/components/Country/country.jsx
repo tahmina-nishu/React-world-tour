@@ -40,7 +40,7 @@ import { useState } from 'react';
 import './country.css'
 
 
-const Country = ({country}) => {
+const Country = ({country, handleVisitedCountry}) => {
     console.log(country);
 
     const {name, flags, population, area, cca3} = country;
@@ -69,15 +69,19 @@ const Country = ({country}) => {
         setVisited(!visited)
     }
 
+console.log(handleVisitedCountry);
+
     return (
-        <div className='country'>
+        // conditional class 
+        <div className={`country ${visited &&  'visited'}`}>
             <p>Name : {name.common}</p>
             <img src={flags.png}/>
             <p>Population : {population}</p>
             <p>Area : {area}</p>
             <p>Code : {cca3}</p>
 
-            <button onClick={handleVisited}>{visited ? 'Visited' : 'Going'}</button>
+            <button>Mark Visited</button> <br />
+            <button className='btn-cls' onClick={handleVisited}>{visited ? 'Visited' : 'Going'}</button> <br />
             {/* {visited && 'I have visited this country.'} */}
             {visited ? 'I have visited this country.' : 'I want to visit this country.'}
         </div>
